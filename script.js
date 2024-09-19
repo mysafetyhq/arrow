@@ -5,8 +5,8 @@ const setImageButton = document.getElementById('setImage');
 const arrowImageUrlInput = document.getElementById('arrowImageUrl');
 const setArrowImageButton = document.getElementById('setArrowImage');
 const arrowSizeInput = document.getElementById('arrowSize');
-const setArrowSizeButton = document.getElementById('setArrowSize');
 const rotationInput = document.getElementById('rotation');
+const sizeValue = document.getElementById('sizeValue');
 let isDragging = false;
 
 setImageButton.addEventListener('click', () => {
@@ -18,22 +18,19 @@ setImageButton.addEventListener('click', () => {
 setArrowImageButton.addEventListener('click', () => {
     const arrowImageUrl = arrowImageUrlInput.value;
     arrow.style.backgroundImage = `url(${arrowImageUrl})`;
-    arrow.style.width = '30px'; // Set a default width
-    arrow.style.height = '30px'; // Set a default height
-    arrow.style.backgroundSize = 'contain'; // Scale the image to fit the div
+    updateArrowSize();
 });
 
-setArrowSizeButton.addEventListener('click', () => {
+arrowSizeInput.addEventListener('input', () => {
     const size = arrowSizeInput.value;
-    if (size) {
-        arrow.style.width = `${size}px`;
-        arrow.style.height = `${size}px`;
-    }
+    sizeValue.textContent = size; // Update size display
+    arrow.style.width = `${size}px`;
+    arrow.style.height = `${size}px`;
 });
 
 rotationInput.addEventListener('input', () => {
     const rotation = rotationInput.value;
-    arrow.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+    arrow.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`; // Apply rotation
 });
 
 arrow.addEventListener('mousedown', (e) => {
@@ -58,3 +55,9 @@ document.addEventListener('mousemove', (e) => {
         arrow.style.top = `${constrainedY}px`;
     }
 });
+
+function updateArrowSize() {
+    const size = arrowSizeInput.value;
+    arrow.style.width = `${size}px`;
+    arrow.style.height = `${size}px`;
+}
