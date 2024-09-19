@@ -1,5 +1,14 @@
 const arrow = document.getElementById('arrow');
+const bgImage = document.getElementById('bgImage');
+const imageUrlInput = document.getElementById('imageUrl');
+const setImageButton = document.getElementById('setImage');
 let isDragging = false;
+
+setImageButton.addEventListener('click', () => {
+    const imageUrl = imageUrlInput.value;
+    bgImage.src = imageUrl;
+    bgImage.style.display = 'block'; // Show the image
+});
 
 arrow.addEventListener('mousedown', (e) => {
     isDragging = true;
