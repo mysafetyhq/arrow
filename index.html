@@ -12,8 +12,9 @@
         <button id="setImage">Set Background Image</button>
         <input type="text" id="arrowImageUrl" placeholder="Enter arrow image URL" />
         <button id="setArrowImage">Set Arrow Image</button>
-        <input type="number" id="arrowSize" placeholder="Arrow size (px)" />
-        <button id="setArrowSize">Set Arrow Size</button>
+        <label for="arrowSize">Arrow Size (px):</label>
+        <input type="range" id="arrowSize" min="10" max="200" value="30" />
+        <span id="sizeValue">30</span>
         <label for="rotation">Rotation (degrees):</label>
         <input type="range" id="rotation" min="0" max="360" value="0" />
     </div>
