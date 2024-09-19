@@ -4,6 +4,9 @@ const imageUrlInput = document.getElementById('imageUrl');
 const setImageButton = document.getElementById('setImage');
 const arrowImageUrlInput = document.getElementById('arrowImageUrl');
 const setArrowImageButton = document.getElementById('setArrowImage');
+const arrowSizeInput = document.getElementById('arrowSize');
+const setArrowSizeButton = document.getElementById('setArrowSize');
+const rotationInput = document.getElementById('rotation');
 let isDragging = false;
 
 setImageButton.addEventListener('click', () => {
@@ -15,9 +18,22 @@ setImageButton.addEventListener('click', () => {
 setArrowImageButton.addEventListener('click', () => {
     const arrowImageUrl = arrowImageUrlInput.value;
     arrow.style.backgroundImage = `url(${arrowImageUrl})`;
-    arrow.style.width = '30px'; // Set a default width (adjust as needed)
-    arrow.style.height = '30px'; // Set a default height (adjust as needed)
+    arrow.style.width = '30px'; // Set a default width
+    arrow.style.height = '30px'; // Set a default height
     arrow.style.backgroundSize = 'contain'; // Scale the image to fit the div
+});
+
+setArrowSizeButton.addEventListener('click', () => {
+    const size = arrowSizeInput.value;
+    if (size) {
+        arrow.style.width = `${size}px`;
+        arrow.style.height = `${size}px`;
+    }
+});
+
+rotationInput.addEventListener('input', () => {
+    const rotation = rotationInput.value;
+    arrow.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
 });
 
 arrow.addEventListener('mousedown', (e) => {
