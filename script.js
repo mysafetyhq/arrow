@@ -18,7 +18,11 @@ setImageButton.addEventListener('click', () => {
 setArrowImageButton.addEventListener('click', () => {
     const arrowImageUrl = arrowImageUrlInput.value;
     arrow.style.backgroundImage = `url(${arrowImageUrl})`;
-    updateArrowSize();
+    arrow.style.width = '30px'; // Set initial width
+    arrow.style.height = '30px'; // Set initial height
+    arrow.style.backgroundSize = 'contain'; // Ensure proper scaling
+    arrow.style.display = 'block'; // Ensure the arrow is visible
+    updateArrowSize(); // Set the initial size
 });
 
 arrowSizeInput.addEventListener('input', () => {
@@ -26,6 +30,9 @@ arrowSizeInput.addEventListener('input', () => {
     sizeValue.textContent = size; // Update size display
     arrow.style.width = `${size}px`;
     arrow.style.height = `${size}px`;
+    // Reset the position to keep it centered when size changes
+    arrow.style.left = `calc(50% - ${size / 2}px)`;
+    arrow.style.top = `calc(50% - ${size / 2}px)`;
 });
 
 rotationInput.addEventListener('input', () => {
@@ -55,9 +62,3 @@ document.addEventListener('mousemove', (e) => {
         arrow.style.top = `${constrainedY}px`;
     }
 });
-
-function updateArrowSize() {
-    const size = arrowSizeInput.value;
-    arrow.style.width = `${size}px`;
-    arrow.style.height = `${size}px`;
-}
