@@ -3,11 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body, html {
     height: 100%;
@@ -28,52 +23,19 @@ body, html {
 }
 
 .background img {
-    max-width: 100%;
+    width: 100%; /* Make sure the image fits the width */
+    height: auto; /* Maintain aspect ratio */
     max-height: 100%; /* Limit height to window height */
-    object-fit: contain; /* Maintain aspect ratio */
     display: none; /* Initially hidden */
 }
 
 .arrow {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid red;
+    width: 30px; /* Default size */
+    height: 30px; /* Default size */
     cursor: pointer;
-}
-
-body, html {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.controls {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none; /* Initially hidden */
-}
-
-.arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid red;
-    cursor: pointer;
+    background-size: contain; /* Scale the image to fit the div */
+    left: 50%; /* Start centered horizontally */
+    top: 50%; /* Start centered vertically */
+    transform: translate(-50%, -50%); /* Center the arrow */
 }
